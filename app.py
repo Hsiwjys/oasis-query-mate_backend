@@ -40,7 +40,7 @@ def query_manual():
         context = retriever.retrieve(query)
         
         # Prepare prompt for Gemini 2.5 Pro
-        prompt = f"Answer based only on this context: {context}\n\nQuestion: {query}. \n Output: Provide a concise, accurate answer based *only* on the following context, avoiding speculation and don't say Based only on the provided context, the requirements only give answer."
+        prompt = f"Answer based only on this context: {context}\n\nQuestion: {query}. \n Output: Provide a concise, accurate answer based *only* on the following context, avoiding speculation and don't say Based only on the provided context, the requirements only give answer.at last give the page number of the context used to answer the question."
         model = genai.GenerativeModel('gemini-2.5-pro')  # Use Gemini 2.5 Pro
         response = model.generate_content(prompt)
         answer = response.text if response else "Error generating response"
@@ -52,3 +52,4 @@ def query_manual():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
+
